@@ -130,3 +130,6 @@ dmypy.json
 
 # store
 *.DS_Store
+
+# zip
+*.zip
