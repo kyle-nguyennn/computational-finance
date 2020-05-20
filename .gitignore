@@ -1,5 +1,4 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
+# Byte-compiled / optimized / DLL files __pycache__/
 *.py[cod]
 *$py.class
 
@@ -133,3 +132,9 @@ dmypy.json
 
 # zip
 *.zip
+
+#exclude cpp build
+*build
+*.swp
+*.swo
+*.idea
