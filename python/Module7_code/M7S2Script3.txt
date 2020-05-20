@@ -1,0 +1,19 @@
+#Analytical bond price Vasicek
+def A(t1,t2,alpha):
+    return (1-np.exp(-alpha*(t2-t1)))/alpha
+
+def D(t1,t2,alpha,b,sigma):
+    val1 = (t2-t1-A(t1,t2,alpha))*(sigma**2/(2*alpha**2)-b)
+    val2 = sigma**2*A(t1,t2,alpha)**2/(4*alpha)
+    return val1-val2
+
+def bond_price_fun(r,t,T,alpha,b,sigma):
+    return np.exp(-A(t,T,alpha)*r+D(t,T,alpha,b,sigma))
+
+r0 = 0.05
+def F(x):
+    alpha = x[0]
+    b = x[1]
+    sigma = x[2]
+    #return sum((bond_price_fun(r0,0,years,alpha,b,sigma)-bond_prices)**2)
+    return sum(np.abs(bond_price_fun(r0,0,years,alpha,b,sigma)-bond_prices))

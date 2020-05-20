@@ -1,0 +1,22 @@
+# Different sigma's tested
+sigma_tested = np.linspace(0.1,0.5,20)
+
+# Variable to track error
+error = np.zeros(len(sigma_tested))
+counter = 0
+
+# Number of simulations
+N = 100000
+
+# Looping through the different sigma's tested
+for sigma in sigma_tested:
+    norm_array = norm.rvs(size = [n-1,N])
+    
+    path = stock_path(norm_array,sigma)
+    mean_path = np.mean(path,axis = 0)
+    total_mean = mean_path + S0/n
+    payoff = discounted_call_payoff(total_mean)
+    price_est = np.mean(payoff)
+    
+    error[counter] = np.abs(price_est-C)
+    counter += 1

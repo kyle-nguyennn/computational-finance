@@ -1,0 +1,7 @@
+plt.xlabel("Maturity")
+plt.ylabel("Bond Price")
+plt.plot(t,vasi_bond, label = "Vasicek Bond Prices")
+plt.plot(t,mc_final,'o', label = "Simple Monte Carlo Bond Prices")
+plt.plot(t,predcorr_final,'x', label = "Predictor-Corrector Bond Prices")
+plt.legend()
+plt.show()

@@ -1,0 +1,11 @@
+# Calculating model prices and yield
+model_prices = bond_price_fun(r0,0,years,opt_alpha,opt_b,opt_sig)
+model_yield = -np.log(model_prices)/years
+
+# Plotting the market vs model prices
+plt.plot(years,bond_prices)
+plt.plot(years,model_prices,'.')
+
+# Plotting the market vs model yields
+plt.plot(years,yield_curve*100)
+plt.plot(years,model_yield*100,'x')

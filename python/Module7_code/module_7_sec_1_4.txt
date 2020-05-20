@@ -1,0 +1,8 @@
+# Finding the put price
+def d_1(x):
+    return 1/(x*np.sqrt(T))*(np.log(S0/K)+(r+x**2/2)*T)
+def d_2(x):
+    return d_1(x)-x*np.sqrt(T)
+def P(x):
+    return -norm.cdf(-d_1(x))*S0 + norm.cdf(-d_2(x))*K*np.exp(-r*T)
+put_price = P(sigma)

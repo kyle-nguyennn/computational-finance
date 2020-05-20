@@ -1,0 +1,37 @@
+import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+
+r = 0.08
+S0 = 50
+K = 60
+T = 1
+n = 12
+C = 3
+
+delta_t = T/n
+
+def func_2(Z,var_2):
+    return S0*np.exp(np.cumsum((r-var_2**2/2)*delta_t+var_2*np.sqrt(delta_t)*Z,axis = 0))
+
+def func_1(average):
+    return np.exp(-r*T)*np.maximum(average-K,0)
+
+var_1 = np.linspace(0.1,0.5,20)
+
+var_3 = np.zeros(len(var_1))
+counter = 0
+
+N = 100000
+
+for var_2 in var_1:
+    norm_array = norm.rvs(size = [n-1,N])
+    
+    path = func_2(norm_array,var_2)
+    mean_path = np.mean(path,axis = 0)
+    total_mean = mean_path + S0/n
+    payoff = func_1(total_mean)
+    price_est = np.mean(payoff)
+    
+    var_3[counter] = np.abs(price_est-C)
+    counter += 1

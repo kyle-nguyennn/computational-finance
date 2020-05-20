@@ -1,0 +1,10 @@
+# Length of time steps
+delta_t = T/n
+
+# Function for stock path
+def stock_path(Z,sigma):
+    return S0*np.exp(np.cumsum((r-sigma**2/2)*delta_t+sigma*np.sqrt(delta_t)*Z,axis = 0))
+
+# Payoff given average stock price
+def discounted_call_payoff(average):
+    return np.exp(-r*T)*np.maximum(average-K,0)

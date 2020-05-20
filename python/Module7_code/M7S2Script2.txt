@@ -1,0 +1,2 @@
+years = np.linspace(1,10,10)
+bond_prices = np.exp(-((1+6*years)*np.log(1+years))/40)

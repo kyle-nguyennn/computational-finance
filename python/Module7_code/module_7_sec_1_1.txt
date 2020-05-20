@@ -1,0 +1,8 @@
+# Setting variables
+r = 0.1
+S0 = 100
+K = 110
+T = 2
+KC = 95
+TC = 1
+price = 15

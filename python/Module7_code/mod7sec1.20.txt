@@ -1,0 +1,12 @@
+# Import relevant libraries
+import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+
+# Declare parameters
+r = 0.08
+S0 = 50
+K = 60
+T = 1
+n = 12
+C = 3

@@ -1,0 +1,4 @@
+# Importing the relevant libraries
+import numpy as np
+from scipy.stats import norm
+import scipy.optimize

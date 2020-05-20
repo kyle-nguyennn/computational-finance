@@ -1,0 +1,10 @@
+# Importing libraries
+import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+import scipy.optimize
+
+# Creating a yield curve for integer maturities
+years = np.linspace(1,10,10)
+yield_curve = (years)**(1/5)/75 + 0.04
+bond_prices = np.exp(-yield_curve*years)

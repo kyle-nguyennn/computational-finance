@@ -1,0 +1,18 @@
+import numpy as np
+from scipy.stats import norm
+import scipy.optimize as opt
+import matplotlib.pyplot as plt
+
+r = 0.06
+S0 = 100
+v0 = 0.06
+K = np.array([110,100,90])
+price = [8.02,12.63,18.72]
+T = 1
+k_log = np.log(K)
+k_log.shape = (3,1)
+rho = -0.4
+
+# Parameters for Gil-Paelez
+t_max = 30
+N = 100

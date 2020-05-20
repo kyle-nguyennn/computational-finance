@@ -1,0 +1,2 @@
+# Calibrating the model
+opt_val = opt.fmin_slsqp(opt_func, (0.1,3,0.1))

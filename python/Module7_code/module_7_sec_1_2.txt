@@ -1,0 +1,9 @@
+# Functions for call
+def d_1c(x):
+    return 1/(x*np.sqrt(TC))*(np.log(S0/KC)+(r+x**2/2)*TC)
+def d_2c(x):
+    return d_1c(x)-x*np.sqrt(TC)
+def C(x):
+    return norm.cdf(d_1c(x))*S0 - norm.cdf(d_2c(x))*KC*np.exp(-r*TC)
+def F(x):
+    return C(x)-price

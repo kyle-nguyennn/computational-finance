@@ -1,0 +1,9 @@
+# Calculating model prices and yield
+model_prices = bond_price_fun(r0,0,years,opt_alpha,opt_b,opt_sig)
+
+fig1 = plt.figure()
+plt.xlabel("Maturity")
+plt.ylabel("Bond price")
+plt.plot(years,bond_prices)
+plt.plot(years,model_prices,'x')
+fig1.savefig("mark_vs_mod_bondprice")

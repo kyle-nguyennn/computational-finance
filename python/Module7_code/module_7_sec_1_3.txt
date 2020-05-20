@@ -1,0 +1,2 @@
+# Solving for sigma
+sigma = scipy.optimize.broyden1(F, 0.2)

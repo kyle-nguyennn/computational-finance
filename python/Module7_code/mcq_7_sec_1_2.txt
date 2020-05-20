@@ -1,0 +1,14 @@
+r = 0.06
+S0 = 90
+K = 120
+T = 3
+KC = 100
+TC = 2
+price = 5
+
+def d_1c(x):
+    return 1/(x*np.sqrt(TC))*(np.log(S0/KC)+(r+x**2/2)*TC)
+def d_2c(x):
+    return d_1c(x)-x*np.sqrt(TC)
+def func(x):
+    return -norm.cdf(-d_1c(x))*S0 + norm.cdf(-d_2c(x))*KC*np.exp(-r*TC)

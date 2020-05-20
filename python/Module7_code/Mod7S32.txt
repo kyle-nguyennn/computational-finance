@@ -1,0 +1,36 @@
+#Characteristic function code
+def a(sigma):
+    return sigma**2/2
+
+def b(u,theta,kappa,sigma):
+    return kappa - rho*sigma*1j*u
+
+def c(u,theta,kappa,sigma):
+    return -(u**2+1j*u)/2
+
+def d(u,theta,kappa,sigma):
+    return np.sqrt(b(u,theta,kappa,sigma)**2-4*a(sigma)*c(u,theta,kappa,sigma))
+
+def xminus(u,theta,kappa,sigma):
+    return (b(u,theta,kappa,sigma)-d(u,theta,kappa,sigma))/(2*a(sigma))
+
+def xplus(u,theta,kappa,sigma):
+    return (b(u,theta,kappa,sigma)+d(u,theta,kappa,sigma))/(2*a(sigma))
+
+def g(u,theta,kappa,sigma):
+    return xminus(u,theta,kappa,sigma)/xplus(u,theta,kappa,sigma)
+
+def C(u,theta,kappa,sigma):
+    val1 = T*xminus(u,theta,kappa,sigma)-np.log((1-g(u,theta,kappa,sigma)*np.exp(-T*d(u,theta,kappa,sigma)))/(1-g(u,theta,kappa,sigma)))/a(sigma)
+    return r*T*1j*u + theta*kappa*val1
+
+def D(u,theta,kappa,sigma):
+    val1 = 1-np.exp(-T*d(u,theta,kappa,sigma))
+    val2 = 1-g(u,theta,kappa,sigma)*np.exp(-T*d(u,theta,kappa,sigma))
+    return (val1/val2)*xminus(u,theta,kappa,sigma)
+
+def log_char(u,theta,kappa,sigma):
+    return np.exp(C(u,theta,kappa,sigma) + D(u,theta,kappa,sigma)*v0 + 1j*u*np.log(S0))
+
+def adj_char(u,theta,kappa,sigma):
+    return log_char(u-1j,theta,kappa,sigma)/log_char(-1j,theta,kappa,sigma)
