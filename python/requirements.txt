@@ -64,7 +64,7 @@ ptyprocess==0.6.0
 pycosat==0.6.3
 pycparser==2.19
 pyglet==1.5.0
-Pygments==2.5.2
+Pygments==2.7.4
 pyOpenSSL==19.1.0
 pyparsing==2.4.6
 pyrsistent==0.15.7
